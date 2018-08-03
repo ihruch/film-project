@@ -57,7 +57,7 @@ export class FilmListComponent implements OnInit {
   }
 
   searchFilms(querySearch) {
-    // console.log(querySearch);
+    console.log(querySearch);
     this.queryStr = querySearch;
     this.configPage.currentPage = 1;
     this.paginator.firstPage();
@@ -69,16 +69,20 @@ export class FilmListComponent implements OnInit {
       this.filmsService
         .searchFilms(this.queryStr, this.configPage.currentPage)
         .subscribe(resSearch => {
-          console.log(resSearch['total_results']);
+          console.log(resSearch);
+
           if (resSearch['total_results']) {
+            console.log('совпаденией ЕСТЬ');
+            this.saveData(
+              resSearch['results'],
+              resSearch['page'],
+              resSearch['total_pages'],
+              resSearch['total_results']
+            );
+          } else {
+            console.log('совпадения НЕТ!!');
             this.isVisible = true;
           }
-          this.saveData(
-            resSearch['results'],
-            resSearch['page'],
-            resSearch['total_pages'],
-            resSearch['total_results']
-          );
         });
     }
   }

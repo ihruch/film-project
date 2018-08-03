@@ -14,8 +14,10 @@
 
 
 <div class="container">
-  <ng-container *ngFor='let actor of resultActors'>
-    <app-actor-item [actor]='actor' [imgPath]='imgPath'> </app-actor-item>
+  <ng-container *ngIf='!isVisible'>
+    <ng-container *ngFor='let actor of resultActors'>
+      <app-actor-item [actor]='actor' [imgPath]='imgPath'> </app-actor-item>
+    </ng-container>
   </ng-container>
   <ng-container *ngIf='isVisible'>
     <p class='comment-block'>По вашему запросу

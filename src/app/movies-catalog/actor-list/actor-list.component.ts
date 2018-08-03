@@ -65,16 +65,18 @@ export class ActorListComponent implements OnInit {
       this.actorsService
         .searchFilmsModel(this.queryStr, this.configPage.currentPage)
         .subscribe(resSearch => {
-          console.log(resSearch['total_results']);
           if (resSearch['total_results']) {
+            console.log('совпаденией ЕСТЬ');
+            this.saveData(
+              resSearch['results'],
+              resSearch['page'],
+              resSearch['total_pages'],
+              resSearch['total_results']
+            );
+          } else {
+            console.log('совпадения НЕТ!!');
             this.isVisible = true;
           }
-          this.saveData(
-            resSearch['results'],
-            resSearch['page'],
-            resSearch['total_pages'],
-            resSearch['total_results']
-          );
         });
     }
   }
