@@ -1,0 +1,40 @@
+.container {
+  /* outline: 1px solid black; */
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 -20px;
+}
+section {
+  margin-top: 30px;
+}
+mat-card {
+  padding: 0 !important;
+}
+.card-item {
+  box-shadow: 0px 1px 0px 1px #eee;
+  width: 290px;
+  max-height: 550px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+.popular-films,
+.popular-actors {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+mat-card-title {
+  font-size: 20px !important;
+  font-weight: 700;
+}
+.section-title {
+  font-size: 36px;
+  font-weight: 500;
+  padding: 5px;
+}
+.section-footer {
+  text-align: right;
+  font-size: 14px;
+  cursor: pointer;
+}

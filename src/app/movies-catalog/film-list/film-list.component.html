@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-content [class.seach-block]='isTrue'>
+    <app-search (search)='searchFilms($event)' (clearSearch)='clearSearchStr()'></app-search>
+  </mat-card-content>
+
+  <mat-card-content [class.view-block]='isTrue'>
+    <button mat-icon-button color="primary">
+      <i class="medium material-icons">
+        view_headline
+      </i>
+    </button>
+    <button mat-icon-button color="primary">
+      <i class=" medium material-icons ">
+        view_week
+      </i>
+    </button>
+  </mat-card-content>
+</mat-card>
+
+<mat-card [class.mat-card-pag]="isTrue" [class.paginator-block]='isTrue'>
+  <mat-paginator [length]="lengthPag" [pageSize]="pageSizePag" (page)="pageEvent = $event" (click)='handlerClick()'>
+  </mat-paginator>
+</mat-card>
+
+<div class="container">
+  <ng-container *ngFor=' let film of resultFilms'>
+    <app-film-item [film]='film' [imgPath]='imgPath' [class.card-item]="isTrue"></app-film-item>
+  </ng-container>
+  <ng-container *ngIf='isVisible'>
+    <p class='comment-block'>По вашему запросу
+      <span class='query-str'>{{queryStr}}</span> ничего не найденно! Попробуйте изменить запрос поиска.</p>
+  </ng-container>
+</div>

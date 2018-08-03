@@ -1,0 +1,72 @@
+.card-item {
+  box-shadow: 0px 1px 0px 1px #eee;
+  min-width: 500px;
+  max-height: 278px;
+  overflow: hidden;
+  margin: 7px;
+}
+mat-card {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 0;
+}
+mat-card-content {
+  padding: 3px 10px;
+}
+.block-content-card {
+  position: relative;
+  width: 100%;
+}
+mat-card-actions {
+  position: absolute;
+  bottom: -20px;
+  right: 30px;
+}
+
+
+
+#canvas{
+  margin: auto;
+  width: 35px;
+  height: 35px;
+} 
+
+
+.canvas-wrap{
+   width: 35px;
+   height: 35px;
+    padding: 3px;
+    border-radius: 50%;
+    background-color: #081c22;
+    position: relative;
+}
+
+span#procent {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 12px;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: 600;
+}
+
+span#procent::after {
+  content: '%';
+}
+/* стили для 3-ч карточек в ряд*/
+/* .card-item {
+  /* box-shadow: 0px 1px 0px 1px #eee;
+ 
+  border: 1px solid red;
+}
+mat-card {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 0;
+}
+.img-film {
+  max-height: 475px;
+  overflow: hidden;
+} */

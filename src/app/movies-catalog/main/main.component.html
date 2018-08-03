@@ -1,0 +1,36 @@
+<div class="container">
+
+  <section>
+    <div class="section-title">
+      Популярные фильмы
+    </div>
+    <div class='popular-films'>
+      <mat-card class="card-item card-film" *ngFor=' let film of (fourFilms$ | async)'>
+        <img src="{{urlImgFilm + film.poster_path}}" alt="{{film['title']}}">
+        <mat-card-header>
+          <mat-card-title>{{film['title']}}</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <div class="section-footer" (click)='moveToFilms()'>
+      смотреть все
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      Популярные актеры
+    </div>
+    <div class='popular-actors'>
+      <div class="card-item card-actor" *ngFor=' let actor of (fourActors$ | async)'>
+        <img src="{{urlImgFilm + actor.profile_path}}" alt="{{actor.name}}">
+        <mat-card-header>
+          <mat-card-title> {{actor['name']}} </mat-card-title>
+        </mat-card-header>
+      </div>
+    </div>
+    <div class="section-footer" (click)='moveToActors()'>
+      смотреть все
+    </div>
+  </section>
+</div>

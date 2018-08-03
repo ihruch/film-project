@@ -1,0 +1,23 @@
+.card-item {
+  margin: 7px 5px;
+  width: 235px;
+  overflow: hidden;
+  box-shadow: px 1px 1px #eee;
+}
+mat-card {
+  padding: 0px;
+}
+mat-card-title {
+  font-size: 19px !important;
+  font-weight: 700;
+  margin: 0;
+}
+mat-card-content span {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: 13px;
+  white-space: nowrap;
+
+  padding: 0 2px;
+  width: 100%;
+  color: #ababab;
+}

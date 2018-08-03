@@ -1,0 +1,13 @@
+<div class="card-item">
+  <mat-card>
+    <img src="{{imgPath + actor.profile_path}}" alt="{{actor.name}}">
+    <mat-card-header>
+      <mat-card-title> {{actor['name']}}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <span> {{ actInFilms(actor) | slice:0:33 }}...</span>
+    </mat-card-content>
+
+  </mat-card>
+</div>

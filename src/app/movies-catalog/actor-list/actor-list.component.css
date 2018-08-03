@@ -1,0 +1,31 @@
+.container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding-top: 20px;
+
+  outline: 1px solid #000;
+}
+app-actor-item {
+  box-sizing: border-box;
+  flex: 0 1 23%;
+}
+mat-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 25px !important;
+}
+.mat-card-pag {
+  /* margin: -10px; */
+}
+.query-str {
+  font-size: 18px;
+  font-weight: 700;
+}
+.mat-paginator-container {
+  display: flex;
+  flex-direction: column !important;
+}

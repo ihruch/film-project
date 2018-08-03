@@ -1,0 +1,29 @@
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 82px;
+}
+img {
+  width: 82px;
+  height: 72px;
+  align-self: flex-end;
+}
+*/ .example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.logo {
+  height: 72px;
+}
+  
+.mat-nav-list {
+  margin-left: 15px;
+  padding: 0;
+  line-height: 82px;
+}
+.mat-nav-list a {
+  line-height: 82px;
+}

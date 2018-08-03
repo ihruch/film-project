@@ -1,0 +1,8 @@
+<mat-form-field>
+
+  <input matInput placeholder="Search film" [(ngModel)]='searchVal' (input)='getValinput()'>
+  <button mat-button *ngIf="searchVal" matSuffix mat-icon-button aria-label="Clear" (click)="clearResult()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-hint>Введите более 3-х символов</mat-hint>
+</mat-form-field>

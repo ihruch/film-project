@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div class="logo">
+      <a href="/">
+        <img src="./../assets/logj-movie-db.svg" alt="main-log"> </a>
+    </div>
+
+    <mat-nav-list *ngFor="let link of links">
+      <a mat-button [routerLink]=" link['path'] " [routerLinkActive]="link['active']">
+        <i class="material-icons ">{{link['icon']}}</i> {{link['label']}}
+      </a>
+    </mat-nav-list>
+    <span class="example-spacer "></span>
+
+    <i class=" material-icons ">person</i>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+
+<main>
+
+  <router-outlet></router-outlet>
+
+</main>
