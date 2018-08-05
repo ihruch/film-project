@@ -9,6 +9,7 @@ mat-card {
   display: flex;
   flex-flow: row nowrap;
   padding: 0;
+  position: relative;
 }
 mat-card-content {
   padding: 3px 10px;
@@ -23,38 +24,17 @@ mat-card-actions {
   right: 30px;
 }
 
-
-
-#canvas{
-  margin: auto;
-  width: 35px;
-  height: 35px;
-} 
-
-
-.canvas-wrap{
-   width: 35px;
-   height: 35px;
-    padding: 3px;
-    border-radius: 50%;
-    background-color: #081c22;
-    position: relative;
-}
-
-span#procent {
-  display: block;
+app-status-icon {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  font-size: 12px;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-weight: 600;
+  top: 0;
+  left: 15px;
 }
 
-span#procent::after {
-  content: '%';
+.mat-card-title {
+  margin-left: 60px;
+  padding-top: 9px;
 }
+
 /* стили для 3-ч карточек в ряд*/
 /* .card-item {
   /* box-shadow: 0px 1px 0px 1px #eee;

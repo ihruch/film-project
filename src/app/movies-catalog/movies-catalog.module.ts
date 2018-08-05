@@ -18,6 +18,7 @@ import { MaterialModule } from './../../app/material.module';
 import { FilmsService } from './services/films.service';
 import { ActorsService } from './services/actors.service';
 import { FormsModule } from '@angular/forms';
+import { StatusIconComponent } from './film-list/film-item/status-icon/status-icon.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { FormsModule } from '@angular/forms';
     ActorListComponent,
     ActorItemComponent,
     MainComponent,
-    SearchComponent
+    SearchComponent,
+    StatusIconComponent
   ],
   exports: [
     FilmListComponent,
@@ -43,7 +45,8 @@ import { FormsModule } from '@angular/forms';
     ActorListComponent,
     ActorItemComponent,
     MainComponent,
-    SearchComponent
+    SearchComponent,
+    StatusIconComponent
   ],
   providers: [FilmsService, ActorsService]
 })

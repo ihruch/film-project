@@ -9,8 +9,9 @@ import { IFilm } from './../../models/film.interface';
 export class FilmItemComponent implements OnInit {
   @Input() film: IFilm;
   @Input() imgPath: String;
-
+  sizeRat = 38;
   isTrue = true;
+
   constructor() {}
 
   ngOnInit() {}
