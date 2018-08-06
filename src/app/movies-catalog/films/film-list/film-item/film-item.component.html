@@ -1,0 +1,58 @@
+<div class="card-item">
+  <mat-card>
+    <img src="{{imgPath + film.poster_path}}" alt="{{film['title']}}" class="img-film">
+    <div class="block-content-card">
+      <mat-card-content>
+        <!-- <div class='block-header-card'> -->
+        <app-status-icon [ratingVote]="film['vote_average']" [sizeRatingIcon]="sizeRat"></app-status-icon>
+
+        <mat-card-title> {{film['title']}}</mat-card-title>
+        <!-- </div> -->
+        <p> {{ film['overview'] | slice:0:140}}... </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button color="primary">
+          <i class="material-icons">
+            play_arrow
+          </i>
+        </button>
+        <button mat-icon-button color="primary">
+          <i class="material-icons">
+            menu
+          </i>
+        </button>
+        <button mat-icon-button color="primary">
+          <i class="material-icons">star</i>
+        </button>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+</div>
+
+<!-- Разметка для трех карточек в ряд -->
+<!-- <div class="card-item">
+  <mat-card>
+    <img src="{{imgPath + film.poster_path}}" alt="{{film['title']}}" class="img-film">
+
+    <mat-card-content>
+      <mat-card-title> {{film['title']}}</mat-card-title>
+      <p> {{ film['overview'] | slice:0:140}}... </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button color="primary">
+        <i class="material-icons">
+          play_arrow
+        </i>
+      </button>
+      <button mat-icon-button color="primary">
+        <i class="material-icons">
+          menu
+        </i>
+      </button>
+      <button mat-icon-button color="primary">
+        <i class="material-icons">star</i>
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+</div> -->

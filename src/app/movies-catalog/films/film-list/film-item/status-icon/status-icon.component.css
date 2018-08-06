@@ -1,0 +1,28 @@
+canvas {
+  margin: auto;
+  /* width: 35px;
+    height: 35px; */
+}
+div {
+  /* width: 35px; */
+  /* height: 35px; */
+  padding: 3px;
+  border-radius: 50%;
+  background-color: #081c22;
+  position: relative;
+}
+
+div span {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 12px;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: 600;
+}
+
+div span::after {
+  content: '%';
+}
