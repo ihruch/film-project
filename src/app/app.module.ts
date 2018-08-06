@@ -1,5 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { MoviesCatalogModule } from './movies-catalog/movies-catalog.module';
@@ -10,9 +12,11 @@ import { MaterialModule } from './material.module';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MaterialModule,
     MoviesCatalogModule,
-    AppRoutingModule,
-    MaterialModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

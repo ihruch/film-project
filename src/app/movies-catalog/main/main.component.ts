@@ -20,8 +20,8 @@ export class MainComponent implements OnInit {
   constructor(
     private filmsService: FilmsService,
     private actorsService: ActorsService,
-    private router: Router,
-  ) { }
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.fourFilms$ = this.filmsService
@@ -33,7 +33,7 @@ export class MainComponent implements OnInit {
       .getPopularActors()
       .pipe(map(x => x['results']))
       .pipe(map(x => x.slice(0, 4)));
-    this.fourActors$.subscribe(i => console.log(i))
+    this.fourActors$.subscribe(i => console.log(i));
   }
   moveToFilms() {
     this.router.navigate(['/films']);
