@@ -25,7 +25,9 @@
 <div class="container">
   <ng-container *ngIf='!isVisible'>
     <ng-container *ngFor=' let film of resultFilms'>
-      <app-film-item [film]='film' [imgPath]='imgPath' [class.card-item]="isTrue"></app-film-item>
+      <a [routerLink]="['/films',film.id]">
+        <app-film-item [film]='film' [imgPath]='imgPath' [class.card-item]="isTrue"></app-film-item>
+      </a>
     </ng-container>
   </ng-container>
   <ng-container *ngIf='isVisible'>

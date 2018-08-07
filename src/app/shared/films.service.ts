@@ -10,6 +10,8 @@ export class FilmsService {
   searchUrl: string = `${this.apiUrl}/search`;
   personUrl: string = `${this.apiUrl}/person`;
   params: string = `&api_key=${this.apiKey}&language=ru-RU`;
+  paramsKey: string = `?api_key=${this.apiKey}`;
+  paramsLang: string = `&language=ru-RU`;
 
   imgPath: string = 'https://image.tmdb.org/t/p';
   midImgPath: string = `${this.imgPath}/w500`;
@@ -42,6 +44,28 @@ export class FilmsService {
       `${this.searchUrl}/movie?${
         this.params
       }&query=${query}&page=${page}&include_adult=0&region=0`
+    );
+  }
+
+  getPrimaryInfoFilm(idFilm) {
+    return this.http.get(
+      `${this.movieUrl}/${idFilm}${this.paramsKey}${this.paramsLang}`
+    );
+  }
+
+  getVideosSingleFilm(idFilm) {
+    return this.http.get(
+      `${this.movieUrl}/${idFilm}/videos${this.paramsKey}${this.paramsLang}`
+    );
+  }
+
+  getCastForFilm(idFilm) {
+    return this.http.get(`${this.movieUrl}/${idFilm}/credits${this.paramsKey}`);
+  }
+
+  getSimilarFilms(idFilm) {
+    return this.http.get(
+      `${this.movieUrl}/${idFilm}/similar${this.paramsKey}${this.paramsLang}`
     );
   }
 }
