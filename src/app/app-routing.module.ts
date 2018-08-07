@@ -1,17 +1,19 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MainComponent } from './movies-catalog/main/main.component';
-import { ActorListComponent } from './movies-catalog/actor-list/actor-list.component';
+import { MainComponent } from './main/main.component';
 
 const router: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'main' },
   { path: 'main', component: MainComponent },
   {
     path: 'films',
-    loadChildren: './movies-catalog/films/films.module#FilmsModule'
+    loadChildren: './films/films.module#FilmsModule'
   },
-  { path: 'actors', component: ActorListComponent }
+  {
+    path: 'actors',
+    loadChildren: './actors/actors.module#ActorsModule'
+  }
 ];
 
 @NgModule({

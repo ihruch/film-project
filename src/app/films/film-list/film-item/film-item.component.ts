@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IFilm } from './../../models/film.interface';
+import { IFilm } from '../../shared/film.interface';
 
 @Component({
   selector: 'app-film-item',
@@ -7,7 +7,7 @@ import { IFilm } from './../../models/film.interface';
   styleUrls: ['./film-item.component.css']
 })
 export class FilmItemComponent implements OnInit {
-  @Input() film: IFilm;
+  @Input() film: any;
   @Input() imgPath: String;
   sizeRat = 38;
   isTrue = true;

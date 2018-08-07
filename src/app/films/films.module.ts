@@ -1,34 +1,27 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MaterialModule } from './../../material.module';
+import { MaterialModule } from './../shared/material.module';
+import { SharedModule } from './../shared/shared.module';
 import { FilmsRoutingModule } from './films-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FilmsComponent } from './films.component';
 import { FilmListComponent } from './film-list/film-list.component';
 import { FilmItemComponent } from './film-list/film-item/film-item.component';
-import { StatusIconComponent } from './film-list/film-item/status-icon/status-icon.component';
+import { StatusIconComponent } from './shared/status-icon/status-icon.component';
 
 import { FilmCardComponent } from './film-card/film-card.component';
-import { SearchComponent } from './../search/search.component';
 
-import { FilmsService } from './../services/films.service';
-import { FormsModule } from '@angular/forms';
+import { FilmsService } from './../shared/films.service';
+
 @NgModule({
-  imports: [
-    CommonModule,
-    MaterialModule,
-    HttpClientModule,
-    FilmsRoutingModule,
-    FormsModule
-  ],
+  imports: [CommonModule, MaterialModule, HttpClientModule, FilmsRoutingModule, SharedModule],
   declarations: [
     FilmsComponent,
     FilmListComponent,
     FilmItemComponent,
     StatusIconComponent,
-    SearchComponent,
     FilmCardComponent
   ],
   exports: [
@@ -36,9 +29,9 @@ import { FormsModule } from '@angular/forms';
     FilmListComponent,
     FilmItemComponent,
     StatusIconComponent,
-    SearchComponent,
     FilmCardComponent
   ],
-  providers: [FilmsService]
+  providers: [FilmsService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class FilmsModule {}

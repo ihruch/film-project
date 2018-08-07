@@ -1,0 +1,51 @@
+<!-- <mat-card>
+  <mat-card-content [class.seach-block]='isTrue'>
+    <app-search (search)='searchFilms($event)' (clearSearch)='clearSearchStr()'></app-search>
+  </mat-card-content>
+  <mat-card-content [class.view-block]='isTrue'> </mat-card-content>
+
+
+</mat-card>
+
+<mat-card [class.mat-card-pag]="isTrue">
+  <mat-paginator [length]="lengthPag" [pageSize]="pageSizePag" (page)="pageEvent = $event" (click)='handlerClick()'>
+  </mat-paginator>
+</mat-card>
+
+
+<div class="container">
+  <ng-container *ngIf='!isVisible'>
+    <ng-container *ngFor='let actor of resultActors'>
+      <app-actor-item [actor]='actor' [imgPath]='imgPath'> </app-actor-item>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf='isVisible'>
+    <p class='comment-block'>По вашему запросу
+      <span class='query-str'>{{queryStr}}</span> ничего не найденно! Попробуйте изменить запрос поиска.</p>
+  </ng-container>
+</div> -->
+
+<!-- ------------------------------------ -->
+<mat-card>
+  <mat-card-content [class.seach-block]='isTrue'>
+    <app-search (search)='searchFilms($event)' (clearSearch)='clearSearchStr()'></app-search>
+  </mat-card-content>
+
+</mat-card>
+
+<mat-card [class.mat-card-pag]="isTrue" [class.paginator-block]='isTrue'>
+  <mat-paginator [length]="lengthPag" [pageSize]="pageSizePag" (page)="pageEvent = $event" (click)='handlerClick()'>
+  </mat-paginator>
+</mat-card>
+
+<div class="container">
+  <ng-container *ngIf='!isVisible'>
+    <ng-container *ngFor='let actor of resultActors'>
+      <app-actor-item [actor]='actor' [imgPath]='imgPath'> </app-actor-item>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf='isVisible'>
+    <p class='comment-block'>По вашему запросу
+      <span class='query-str'>{{queryStr}}</span> ничего не найденно! Попробуйте изменить запрос поиска.</p>
+  </ng-container>
+</div>

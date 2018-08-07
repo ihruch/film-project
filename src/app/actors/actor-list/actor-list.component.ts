@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActorsService } from './../services/actors.service';
+import { ActorsService } from '../../shared/actors.service';
 import { MatPaginator } from '@angular/material';
+
 @Component({
   selector: 'app-actor-list',
   templateUrl: './actor-list.component.html',
@@ -25,7 +26,7 @@ export class ActorListComponent implements OnInit {
   pageSizePag = 20;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private actorsService: ActorsService) {}
+  constructor(private actorsService: ActorsService) { }
 
   saveData(result, page, totalPage, totalResult) {
     this.resultActors = result;
@@ -56,6 +57,7 @@ export class ActorListComponent implements OnInit {
   searchFilms(querySearch) {
     console.log(querySearch);
     this.queryStr = querySearch;
+    this.configPage.currentPage = 1;
     this.paginator.firstPage();
     this.handlerSearchFilm();
   }

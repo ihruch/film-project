@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { FilmsComponent } from './films.component';
 import { FilmListComponent } from './film-list/film-list.component';
@@ -12,23 +12,17 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: FilmListComponent,
+        component: FilmListComponent
       },
       {
         path: ':id',
         component: FilmCardComponent
       }
     ]
-
   }
 ];
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
-export class FilmsRoutingModule {
-}
+export class FilmsRoutingModule {}

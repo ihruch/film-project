@@ -20,7 +20,7 @@ export class FilmsService {
   smallBackPath: string = `${this.imgPath}/w235_and_h235_face`;
   smallMainPage: string = `${this.imgPath}/w300_and_h450_face`;
 
-  firstResult: any;
+  firstResult: object;
   constructor(private http: HttpClient) {}
 
   getPopularFilms(page?: number) {
@@ -28,7 +28,10 @@ export class FilmsService {
       .get(`${this.movieUrl}/popular?page=${page}${this.params}`)
       .pipe(
         map(x => {
-          page === 1 && (this.firstResult = x);
+          if (x['page'] === 1) {
+            this.firstResult = x;
+            console.log('1');
+          }
           return x;
         })
       );

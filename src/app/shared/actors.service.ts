@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { TagPlaceholder } from '@angular/compiler/src/i18n/i18n_ast';
 import { mapChildrenIntoArray } from '@angular/router/src/url_tree';
 import { map } from 'rxjs/operators';
-import { IActors } from './../models/actors.interface';
 
 @Injectable()
 export class ActorsService {

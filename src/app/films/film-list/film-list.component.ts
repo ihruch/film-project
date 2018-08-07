@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { FilmsService } from './../services/films.service';
+import { FilmsService } from '../../shared/films.service';
 import { TagPlaceholder } from '@angular/compiler/src/i18n/i18n_ast';
 
 import { MatPaginator } from '@angular/material';
@@ -43,17 +43,27 @@ export class FilmListComponent implements OnInit {
   }
 
   getDatafilms() {
-    this.filmsService
-      .getPopularFilms(this.configPage.currentPage)
-      .subscribe(filmList => {
-        console.log(filmList);
-        this.saveData(
-          filmList['results'],
-          filmList['page'],
-          filmList['total_pages'],
-          filmList['total_results']
-        );
-      });
+    if (this.filmsService.firstResult) {
+      const temp = this.filmsService.firstResult;
+      this.saveData(
+        temp['results'],
+        temp['page'],
+        temp['total_pages'],
+        temp['total_results']
+      );
+    } else {
+      this.filmsService
+        .getPopularFilms(this.configPage.currentPage)
+        .subscribe(filmList => {
+          // console.log(filmList);
+          this.saveData(
+            filmList['results'],
+            filmList['page'],
+            filmList['total_pages'],
+            filmList['total_results']
+          );
+        });
+    }
   }
 
   searchFilms(querySearch) {
