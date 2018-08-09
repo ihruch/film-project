@@ -22,7 +22,6 @@ export class StatusIconComponent implements OnInit {
   oneProcent: number = 360 / 100;
   fps = 1000 / 800;
   deegres = 0;
-  // sizeIcon = 38;
 
   constructor() {}
 

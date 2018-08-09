@@ -71,7 +71,6 @@ export class FilmListComponent implements OnInit {
           console.log(resSearch);
 
           if (resSearch['total_results']) {
-            console.log('совпаденией ЕСТЬ');
             this.saveData(
               resSearch['results'],
               resSearch['page'],
@@ -79,7 +78,6 @@ export class FilmListComponent implements OnInit {
               resSearch['total_results']
             );
           } else {
-            console.log('совпадения НЕТ!!');
             this.isVisible = true;
           }
         });

@@ -21,6 +21,7 @@ export class FilmsService {
   // smallBackPath: string = `${this.imgPath}/w300`;
   smallBackPath: string = `${this.imgPath}/w235_and_h235_face`;
   smallMainPage: string = `${this.imgPath}/w300_and_h450_face`;
+  smallPortret: string = `${this.imgPath}/w138_and_h175_face`;
 
   firstResult: object;
   constructor(private http: HttpClient) {}
@@ -32,7 +33,6 @@ export class FilmsService {
         map(x => {
           if (x['page'] === 1) {
             this.firstResult = x;
-            console.log('1');
           }
           return x;
         })

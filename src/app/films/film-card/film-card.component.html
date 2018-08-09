@@ -1,6 +1,77 @@
-<p> {{confimFilm.descrFilm.title }} </p>
-<p> {{confimFilm.descrFilm.homepage }} </p>
+<div class="wrapper-main-block">
+    <div class="container" *ngIf="dataDescriptionFilm?.poster_path">
 
-<P> {{confimFilm.videosFilm.id}} </P>
-<P> {{confimFilm.charactersFilm.cast.length}} </P>
-<P> similar - {{confimFilm.similarFilm.total_results }} </P>
+        <div class="main-desc-block">
+            <div class="img-block">
+                <img src="https://image.tmdb.org/t/p/w300_and_h450_face{{dataDescriptionFilm.poster_path}}" alt="">
+
+            </div>
+
+            <div class="content-block">
+                <div class="title-content">
+                    <h1> {{dataDescriptionFilm.title}}</h1>
+                    <span> ( {{dataDescriptionFilm.release_date | slice:0:4 }})</span>
+                </div>
+
+                <div class="desc-content">
+                    <h3>Обзор</h3>
+                    {{ dataDescriptionFilm.overview }}
+                </div>
+
+                <div class="social-block">
+                    <ul>
+                        <li class='chart'>
+                            <app-status-icon *ngIf="dataDescriptionFilm.vote_average" ratingVote="{{dataDescriptionFilm.vote_average}}" [sizeRatingIcon]="sizeRat"></app-status-icon>
+                            <span>Рейтинг
+                                <br>зрителей</span>
+                        </li>
+                        <li>
+                            <button mat-icon-button color="primary">
+                                <i class="medium material-icons">
+                                    view_headline
+                                </i>
+                            </button>
+                        </li>
+                        <li>
+                            <button mat-icon-button color="primary">
+                                <i class="medium material-icons">
+                                    favorite_border
+                                </i>
+                            </button>
+                        </li>
+                        <li>
+                            <button mat-icon-button color="primary">
+                                <i class="medium material-icons">
+                                    bookmark_border
+                                </i>
+                            </button>
+                        </li>
+                        <li>
+                            <button mat-icon-button color="primary">
+                                <i class="large material-icons">
+                                    play_arrow
+                                </i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+<!-- <div class="container">
+    <div class="wrapper-actors">
+        <mat-card class="actor-card" *ngFor="let actor of confimFilm.charactersFilm?.cast | slice:0:6">
+            <img src="{{urlImgPortret}}" alt="Photo of {{actor.name}}">
+            <mat-card-content>
+                <p> {{actor.name}} </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div> -->

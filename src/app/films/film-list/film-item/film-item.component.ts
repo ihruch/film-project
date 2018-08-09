@@ -7,8 +7,10 @@ import { IFilm } from '../../shared/film.interface';
   styleUrls: ['./film-item.component.css']
 })
 export class FilmItemComponent implements OnInit {
-  @Input() film: any;
-  @Input() imgPath: String;
+  @Input()
+  film: any;
+  @Input()
+  imgPath: String;
   sizeRat = 38;
   isTrue = true;
 
