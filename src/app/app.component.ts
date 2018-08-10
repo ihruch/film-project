@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './shared/services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -28,4 +30,18 @@ export class AppComponent {
       icon: 'recent_actors'
     }
   ];
+  constructor(private authService: AuthService, private router: Router) {}
+
+  get isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  logout() {
+    if (this.authService.isLoggedIn()) {
+      console.log('logout');
+      this.authService.logout();
+
+      this.router.navigate(['/login']);
+    }
+  }
 }

@@ -13,10 +13,16 @@ import { StatusIconComponent } from './shared/status-icon/status-icon.component'
 
 import { FilmCardComponent } from './film-card/film-card.component';
 
-import { FilmsService } from './../shared/films.service';
+import { FilmsService } from './../shared/services/films.service';
 
 @NgModule({
-  imports: [CommonModule, MaterialModule, HttpClientModule, FilmsRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    HttpClientModule,
+    FilmsRoutingModule,
+    SharedModule
+  ],
   declarations: [
     FilmsComponent,
     FilmListComponent,

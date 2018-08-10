@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { FilmsService } from '../../shared/films.service';
+import { FilmsService } from '../../shared/services/films.service';
 import { TagPlaceholder } from '@angular/compiler/src/i18n/i18n_ast';
 
 import { MatPaginator } from '@angular/material';

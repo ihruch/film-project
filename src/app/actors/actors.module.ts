@@ -9,7 +9,7 @@ import { ActorsComponent } from './actors.component';
 import { ActorCardComponent } from './actor-card/actor-card.component';
 import { ActorItemComponent } from './actor-list/actor-item/actor-item.component';
 
-import { ActorsService } from '../shared/actors.service';
+// import { ActorsService } from './../shared/actors.service';
 import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
@@ -32,7 +32,7 @@ import { SharedModule } from './../shared/shared.module';
     ActorsComponent,
     ActorCardComponent
   ],
-  providers: [ActorsService],
+  // providers: [ActorsService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ActorsModule {}

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActorsService } from '../../shared/actors.service';
+import { ActorsService } from '../../shared/services/actors.service';
 import { MatPaginator } from '@angular/material';
 
 @Component({

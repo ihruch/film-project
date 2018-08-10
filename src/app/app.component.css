@@ -1,3 +1,6 @@
+main {
+  position: relative;
+}
 
 .mat-toolbar-row,
 .mat-toolbar-single-row {
@@ -8,7 +11,7 @@ img {
   height: 72px;
   align-self: flex-end;
 }
-*/ .example-icon {
+.example-icon {
   padding: 0 14px;
 }
 
@@ -18,7 +21,7 @@ img {
 .logo {
   height: 72px;
 }
-  
+
 .mat-nav-list {
   margin-left: 15px;
   padding: 0;
@@ -26,4 +29,7 @@ img {
 }
 .mat-nav-list a {
   line-height: 82px;
+}
+.material-icons {
+  cursor: pointer;
 }

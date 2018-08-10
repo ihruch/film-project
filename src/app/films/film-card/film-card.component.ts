@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { FilmsService } from '../../shared/films.service';
+import { FilmsService } from '../../shared/services/films.service';
 import { forkJoin, Observable } from 'rxjs';
 import { delay, tap, switchMap, map, mergeMap } from 'rxjs/operators';
 
