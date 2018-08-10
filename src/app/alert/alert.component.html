@@ -1,0 +1,16 @@
+<section *ngIf="isShow" [ngClass]="{
+    'alert-success': message.type === 'success',
+    'alert-danger': message.type === 'danger',
+    'alert-info': message.type === 'info',     
+    'alert-warning': message.type === 'warning' 
+    }">
+
+  <div class="alert-item">
+    <div class="alert-item-body">{{message.body}}</div>
+
+    <button mat-icon-button (click)="close()" *ngIf="message.action">
+      <i class="material-icons">close</i>
+    </button>
+  </div>
+
+</section>

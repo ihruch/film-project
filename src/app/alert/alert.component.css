@@ -1,0 +1,37 @@
+section {
+  border: 1px solid #000;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+.alert-success {
+  background-color: #dff0d0;
+}
+.alert-danger {
+  background-color: #f5dbd9;
+}
+.alert-info {
+  background-color: #e1f1f6;
+}
+.alert-warning {
+  background-color: #f5dbd9;
+}
+.alert-icon-wrapper {
+  width: 24px;
+  height: 24px;
+}
+.alert-item {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-weight: 600;
+  padding: 15px 25px;
+  font-size: 14px;
+}
+.alert-item button {
+  margin-left: auto;
+}
+.alert-item-body {
+}
