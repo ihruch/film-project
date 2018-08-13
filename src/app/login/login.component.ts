@@ -27,15 +27,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService
-      .login(this.credentials.username, this.credentials.password)
+    this.authService.login(this.credentials.username, this.credentials.password)
       .subscribe(
         () => {
           this.msgService.setMessage({
             type: 'success',
-            body: `Добро пожаловать ${
+            body: `Добро пожаловать  ${
               this.credentials.username
-            }, Вы успешно вошли в систему.`
+            }.  Вы успешно вошли в систему.`
           });
           setTimeout(() => {
             this.router.navigate(['/main']);

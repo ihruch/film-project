@@ -38,10 +38,8 @@ export class AppComponent {
 
   logout() {
     if (this.authService.isLoggedIn()) {
-      console.log('logout');
-      this.authService.logout();
-
-      this.router.navigate(['/login']);
+        this.authService.logout();
+        this.router.navigate(['/login']);
     }
   }
 }

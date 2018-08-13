@@ -66,9 +66,9 @@ export class FilmCardComponent implements OnInit {
   dataCharactersFilm: any;
   dataSimilarFilm: any;
 
-  urlImgFilm = this.filmsService.smallMainPage;
-
-  urlImgBg;
+  urlImgFilm = this.filmsService.smallMainPage; // backdrop_path
+  imgBGI = this.filmsService.bigBackPath;
+  urlImgPortret;
   sizeRat = 72;
   vote = 0;
 
@@ -83,69 +83,93 @@ export class FilmCardComponent implements OnInit {
       this.idFilm = params.get('id');
     });
 
-    const s1$ = this.filmsService.getPrimaryInfoFilm(this.idFilm);
-    const s2$ = this.filmsService.getVideosSingleFilm(this.idFilm);
+    const dataStream = forkJoin(
+      this.filmsService.getPrimaryInfoFilm(this.idFilm),
+      this.filmsService.getVideosSingleFilm(this.idFilm),
+      this.filmsService.getCastForFilm(this.idFilm),
+      this.filmsService.getSimilarFilms(this.idFilm)
+    )
+      .pipe(delay(2 * 1000))
+      .subscribe(data => {
+        // console.log(data[0]);
+        // console.log(data[1]);
+        console.log(data[2]);
+        // console.log(data[3]);
 
-    const s3$ = this.filmsService.getCastForFilm(this.idFilm);
-    const s4$ = this.filmsService.getSimilarFilms(this.idFilm);
+        [
+          this.dataDescriptionFilm,
+          this.dataVideosFilm,
+          this.dataCharactersFilm,
+          this.dataSimilarFilm
+        ] = data;
 
-    s1$
-      .pipe(
-        mergeMap(val1 => {
-          this.dataDescriptionFilm = val1;
-          return s2$.pipe(
-            map(val2 => {
-              this.dataVideosFilm = val2;
-              return val2;
-            })
-          );
-        })
-      )
-      .subscribe(x => console.log(x));
+        console.log(this.dataDescriptionFilm);
+      });
+    // const s1$ = this.filmsService.getPrimaryInfoFilm(this.idFilm);
+    // const s2$ = this.filmsService.getVideosSingleFilm(this.idFilm);
 
-    s3$
-      .pipe(
-        mergeMap(val3 => {
-          this.dataCharactersFilm = val3;
-          return s4$.pipe(
-            map(val4 => {
-              this.dataSimilarFilm = val4;
-              return val4;
-            })
-          );
-        })
-      )
-      .subscribe(x => console.log(x));
+    // const s3$ = this.filmsService.getCastForFilm(this.idFilm);
+    // const s4$ = this.filmsService.getSimilarFilms(this.idFilm);
+
+    // s1$
+    //   .pipe(
+    //     mergeMap(val1 => {
+    //       this.dataDescriptionFilm = val1;
+    //       return s2$.pipe(
+    //         map(val2 => {
+    //           this.dataVideosFilm = val2;
+    //           return val2;
+    //         })
+    //       );
+    //     })
+    //   )
+    //   .subscribe(x => x);
+
+    // s3$
+    //   .pipe(
+    //     mergeMap(val3 => {
+    //       this.dataCharactersFilm = val3;
+    //       return s4$.pipe(
+    //         map(val4 => {
+    //           this.dataSimilarFilm = val4;
+    //           return val4;
+    //         })
+    //       );
+    //     })
+    //   )
+    //   .subscribe(x => console.log(x));
   }
-  // ------------------------уточнить какой способ работает быстрее.------------------------
-  // const dataStream = forkJoin(
-  //   this.filmsService.getPrimaryInfoFilm(this.idFilm),
-  //   this.filmsService.getVideosSingleFilm(this.idFilm),
-  //   this.filmsService.getCastForFilm(this.idFilm),
-  //   this.filmsService.getSimilarFilms(this.idFilm)
-  // )
-  //   .pipe(delay(2 * 1000))
-  //   .subscribe(data => {
-  //     console.log(data[0]);
-  //     console.log(data[1]);
-  //     console.log(data[2]);
-  //     console.log(data[3]);
 
-  //     [
-  //       this.dataDescriptionFilm,
-  //       this.dataVideosFilm,
-  //       this.dataCharactersFilm,
-  //       this.dataSimilarFilm
-  //     ] = data;
-
-  //     console.log(this.dataCharactersFilm.cast);
-  //   });
-  // }
+  getSantizeUrl(url) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
 }
-
 // this.urlImgPortret = this.sanitizer.bypassSecurityTrustResourceUrl(
-//   `https://image.tmdb.org/t/p/w300_and_h450_face${
-//     this.dataDescriptionFilm['poster_path']
+//   `https://image.tmdb.org/t/p/w1280${
+//     this.dataDescriptionFilm.backdrop_path
 //   }`
 // );
-// console.log(this.urlImgPortret);/qIUFg6tzKeK5bUDguonWCAFceNB.jpg
+// ------------------------уточнить какой способ работает быстрее.------------------------
+// const dataStream = forkJoin(
+//   this.filmsService.getPrimaryInfoFilm(this.idFilm),
+//   this.filmsService.getVideosSingleFilm(this.idFilm),
+//   this.filmsService.getCastForFilm(this.idFilm),
+//   this.filmsService.getSimilarFilms(this.idFilm)
+// )
+//   .pipe(delay(2 * 1000))
+//   .subscribe(data => {
+//     console.log(data[0]);
+//     console.log(data[1]);
+//     console.log(data[2]);
+//     console.log(data[3]);
+
+//     [
+//       this.dataDescriptionFilm,
+//       this.dataVideosFilm,
+//       this.dataCharactersFilm,
+//       this.dataSimilarFilm
+//     ] = data;
+
+//     console.log(this.dataCharactersFilm.cast);
+//   });
+// }

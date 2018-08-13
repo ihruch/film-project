@@ -27,3 +27,6 @@ mat-card {
   display: flex;
   flex-direction: column !important;
 }
+a {
+  text-decoration: none;
+}

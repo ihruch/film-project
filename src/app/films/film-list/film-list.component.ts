@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FilmsService } from '../../shared/services/films.service';
 import { TagPlaceholder } from '@angular/compiler/src/i18n/i18n_ast';
 
-import { MatPaginator } from '@angular/material';
+import { MatPaginator, PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-film-list',
@@ -11,8 +11,10 @@ import { MatPaginator } from '@angular/material';
 })
 export class FilmListComponent implements OnInit {
   resultFilms = [];
+
   imgPath = this.filmsService.smallImgPath;
-  // imgPath = this.filmsService.smallBackPath; для показа 3-ч карточек в рядок
+ 
+  // imgPath = this.filmsService.smallBackPath; для показа 3-ч карточек в рядок  backdrop_path
   queryStr: string;
   isTrue = true;
   isVisible = false;
@@ -26,7 +28,9 @@ export class FilmListComponent implements OnInit {
   // MatPaginator Inputs
   lengthPag = null;
   pageSizePag = 20;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  pageEvent: PageEvent;
+  @ViewChild(MatPaginator)
+  paginator: MatPaginator;
 
   constructor(private filmsService: FilmsService) {}
 
@@ -94,12 +98,14 @@ export class FilmListComponent implements OnInit {
       );
       this.queryStr = '';
       this.paginator.firstPage();
+
       this.isVisible = false;
     }
   }
 
   handlerClick() {
-    this.configPage.currentPage = this.paginator.pageIndex + 1;
+    console.log(this.paginator.pageIndex);
+    this.configPage.currentPage = this.pageEvent.pageIndex + 1;
     this.queryStr ? this.handlerSearchFilm() : this.getDatafilms();
   }
 }

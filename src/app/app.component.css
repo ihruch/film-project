@@ -1,10 +1,14 @@
 main {
   position: relative;
 }
-
+mat-toolbar {
+  background-color: #081c24;
+  color: white;
+}
 .mat-toolbar-row,
 .mat-toolbar-single-row {
   height: 82px;
+  z-index: 100;
 }
 img {
   width: 82px;

@@ -24,9 +24,10 @@ export class ActorListComponent implements OnInit {
   // MatPaginator Inputs
   lengthPag = null;
   pageSizePag = 20;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator)
+  paginator: MatPaginator;
 
-  constructor(private actorsService: ActorsService) { }
+  constructor(private actorsService: ActorsService) {}
 
   saveData(result, page, totalPage, totalResult) {
     this.resultActors = result;

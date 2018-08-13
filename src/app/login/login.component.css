@@ -1,18 +1,15 @@
 .container {
-  max-height: 100vh;
+  max-height: 88vh;
 }
 .form-login {
   background: #fafafa;
-  border: 2px solid #000;
-  position: absolute;
-  top: 0;
-  left: 0;
+  box-shadow: 0px 1px 1px 1px #dddddd;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0 45px;
-  height: 100vh;
+  height: 88vh;
   min-width: 375px;
   max-width: 35%;
 }

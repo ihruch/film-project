@@ -1,3 +1,125 @@
-<p>
-  actor-card works!
-</p>
+<div class="main-line">
+
+  <div class="container">
+    <div class="main-line-wrapper">
+      <div class="block-foto">
+        <img src="https://image.tmdb.org/t/p/w300_and_h450_face{{dataDescriptionActor?.profile_path}}" alt="">
+      </div>
+      <div class="block-content">
+        <h2>{{dataDescriptionActor?.name}}</h2>
+        <div class="item-biography"> {{ dataDescriptionActor?.biography | slice:0:500}}... </div>
+        <button mat-icon-button>
+          <mat-icon aria-label="Open window" (click)='openWin()'>arrow_drop_down_circle</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="media-block">
+  <div class="container">
+    <div class="wrapper-media-block">
+      <div class="grey-block">
+        <h3>Информация об актере</h3>
+        <p>
+          <strong>Пол</strong>
+          <Br> {{dataDescriptionActor?.genre == 1? 'Женский': 'Мужской'}}
+        </p>
+        <p>
+          <strong>Всего фильмов</strong>
+          <Br>{{dataPalyinFilm?.length}}
+
+        </p>
+        <p>
+          <strong>День рождения</strong>
+          <Br>{{dataDescriptionActor?.birthday}}
+        </p>
+        <p>
+          <strong>Место рождения</strong>
+          <Br>{{dataDescriptionActor?.place_of_birth}}
+        </p>
+        <p>
+          <strong>Официальный сайт</strong>
+          <Br>{{dataDescriptionActor?.homepage}}
+        </p>
+
+        <div>
+          <strong>Также известный как</strong>
+          <br>
+          <ul class="list-name">
+            <li *ngFor="let name of dataDescriptionActor?.also_known_as"> {{name}}</li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="white-block">
+        <div class="media-block-img">
+
+          <mat-card *ngFor="let film of (dataPalyinFilm | slice:0:8)">
+            <a [routerLink]="['/films', film?.id]">
+              <img src="https://image.tmdb.org/t/p/w150_and_h225_bestv2/{{film.poster_path}}" alt="film.title">
+              <mat-card-title>{{film.title}}</mat-card-title>
+            </a>
+          </mat-card>
+
+
+
+
+        </div>
+        <div class="media-block-table">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="biography-window" #modalWinBiography>
+  <div class="title-biography">
+    <span>Биография</span>
+    <button mat-icon-button>
+      <mat-icon aria-label="Closed window" (click)='closeWin()'>clear</mat-icon>
+    </button>
+  </div>
+  <div class="conten-biography">
+    {{ dataDescriptionActor?.biography }}
+  </div>
+</div>
+
+
+
+
+
+<!-- <div class="wrapper-main-block">
+  <div class="container" *ngIf="dataDescriptionActor?.profile_path">
+    
+
+    <div class="main-desc-block">
+      <div class="img-block">
+        <img src="https://image.tmdb.org/t/p/w300_and_h450_face{{dataDescriptionActor.profile_path}}" alt="">
+
+      </div>
+
+      <div class="content-block">
+        <div class="title-content">
+          <h1> {{dataDescriptionActor.name}}</h1>
+          <span> ( {{dataDescriptionActor.birthday }})</span>
+        </div>
+
+        <div class="desc-content">
+          <h3>Биография</h3>
+          <div class="item-biography"> {{ dataDescriptionActor.biography }}... </div>
+          <button>
+            <i class="material-icons">arrow_drop_down</i>
+          </button>
+         <span> <i class="material-icons">arrow_drop_up</i></span> 
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div> -->

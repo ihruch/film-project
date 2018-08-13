@@ -25,7 +25,7 @@
   </ng-container>
 </div> -->
 
-<!-- ------------------------------------ -->
+<!-- - -->
 <mat-card>
   <mat-card-content [class.seach-block]='isTrue'>
     <app-search (search)='searchFilms($event)' (clearSearch)='clearSearchStr()'></app-search>
@@ -41,7 +41,9 @@
 <div class="container">
   <ng-container *ngIf='!isVisible'>
     <ng-container *ngFor='let actor of resultActors'>
-      <app-actor-item [actor]='actor' [imgPath]='imgPath'> </app-actor-item>
+      <a [routerLink]="['/actors', actor.id]">
+        <app-actor-item [actor]='actor' [imgPath]='imgPath'> </app-actor-item>
+      </a>
     </ng-container>
   </ng-container>
   <ng-container *ngIf='isVisible'>
