@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TagPlaceholder } from '@angular/compiler/src/i18n/i18n_ast';
 import { mapChildrenIntoArray } from '@angular/router/src/url_tree';
-import { map } from 'rxjs/operators';
+import { map, delay } from 'rxjs/operators';
 
 @Injectable()
 export class ActorsService {
@@ -37,7 +37,8 @@ export class ActorsService {
           }
           return x;
         })
-      );
+      )
+      .pipe(delay(1500));
   }
 
   searchFilmsModel(query, page) {

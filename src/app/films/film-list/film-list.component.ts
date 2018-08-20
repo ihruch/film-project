@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FilmsService } from '../../shared/services/films.service';
 import { TagPlaceholder } from '@angular/compiler/src/i18n/i18n_ast';
 
@@ -13,7 +13,7 @@ export class FilmListComponent implements OnInit {
   resultFilms = [];
 
   imgPath = this.filmsService.smallImgPath;
- 
+
   // imgPath = this.filmsService.smallBackPath; для показа 3-ч карточек в рядок  backdrop_path
   queryStr: string;
   isTrue = true;
@@ -32,6 +32,9 @@ export class FilmListComponent implements OnInit {
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
 
+  @ViewChild('modalWin', { read: ElementRef })
+  modalWin: ElementRef;
+
   constructor(private filmsService: FilmsService) {}
 
   saveData(result, page, totalPage, totalResult) {
@@ -44,6 +47,11 @@ export class FilmListComponent implements OnInit {
 
   ngOnInit() {
     this.getDatafilms();
+    this.modalWin.nativeElement.style.display = 'block';
+
+    setTimeout(() => {
+      this.modalWin.nativeElement.style.display = '';
+    }, 1500);
   }
 
   getDatafilms() {
@@ -103,9 +111,16 @@ export class FilmListComponent implements OnInit {
     }
   }
 
-  handlerClick() {
-    console.log(this.paginator.pageIndex);
+  handlerClick(event) {
+    const btn = event.target.closest('button');
+    btn.disabled = true;
+    this.modalWin.nativeElement.style.display = 'block';
+
     this.configPage.currentPage = this.pageEvent.pageIndex + 1;
     this.queryStr ? this.handlerSearchFilm() : this.getDatafilms();
+    setTimeout(() => {
+      btn.disabled = '';
+      this.modalWin.nativeElement.style.display = '';
+    }, 1500);
   }
 }

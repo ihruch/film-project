@@ -34,7 +34,7 @@
 </mat-card>
 
 <mat-card [class.mat-card-pag]="isTrue" [class.paginator-block]='isTrue'>
-  <mat-paginator [length]="lengthPag" [pageSize]="pageSizePag" (page)="pageEvent = $event" (click)='handlerClick()'>
+  <mat-paginator [length]="lengthPag" [pageSize]="pageSizePag" (page)="pageEvent = $event" (click)='handlerClick($event)'>
   </mat-paginator>
 </mat-card>
 
@@ -50,4 +50,12 @@
     <p class='comment-block'>По вашему запросу
       <span class='query-str'>{{queryStr}}</span> ничего не найденно! Попробуйте изменить запрос поиска.</p>
   </ng-container>
+</div>
+
+<div class='modal-win' #modalWin>
+  <div class="swirl swirlIn">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </div>

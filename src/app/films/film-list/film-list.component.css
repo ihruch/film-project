@@ -38,3 +38,70 @@ mat-card {
 a {
   text-decoration: none;
 }
+
+.modal-win {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+/* SPINNEr  swirl swirlIn */
+.swirl {
+  top: 40%;
+  left: 40%;
+  /* transform: translate(-50%, -50%); */
+  width: 200px;
+  height: 200px;
+  position: relative;
+  filter: blur(2px) hue-rotate(0deg);
+  margin: 20px;
+  animation: swirlSpin 0.8s linear infinite;
+}
+
+.swirl div {
+  border: 4px solid #00d573;
+  border-width: 4px 0 0 0;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.swirl div:first-child {
+  width: 200px;
+  height: 200px;
+}
+.swirl div:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  top: 25px;
+  left: 25px;
+  transform: rotate(50deg);
+}
+.swirl div:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  top: 50px;
+  left: 50px;
+  transform: rotate(10deg);
+}
+.swirl.swirlIn div:first-child {
+  animation: swirlOpacity 3s ease infinite;
+}
+.swirl.swirlIn div:nth-child(2) {
+  animation: swirlOpacitySecond 3s ease infinite;
+}
+.swirl.swirlIn div:nth-child(3) {
+  animation: swirlOpacityThird 2s ease infinite;
+}
+@keyframes swirlSpin {
+  from {
+  }
+  to {
+    transform: rotate(360deg);
+    filter: blur(2px) hue-rotate(50deg);
+  }
+}

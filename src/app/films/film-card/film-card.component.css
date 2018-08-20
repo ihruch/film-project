@@ -21,17 +21,19 @@
     rgba(12.55%, 24.71%, 34.51%, 0.98) 0%,
     rgba(12.55%, 24.71%, 34.51%, 0.88) 100%
   );
-  /* top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.95); */
 }
 .main-desc-block {
   width: 100%;
 
   display: flex;
   flex-direction: row;
+}
+.img-block {
+  width: 300px;
+  height: 450px;
+}
+.img-block img {
+  z-index: 50;
 }
 .content-block {
   flex: 1;
@@ -143,4 +145,61 @@ mat-card img {
   height: 1000%;
   background-color: #f7f7f7;
   z-index: -1;
+}
+
+/* SPINNEr  swirl swirlIn */
+.modal-win {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+.swirl {
+  top: 40%;
+  left: 40%;
+
+  width: 200px;
+  height: 200px;
+  position: relative;
+  filter: blur(1px) hue-rotate(0deg);
+  margin: 20px;
+  animation: swirlSpin 0.8s linear infinite;
+}
+
+.swirl div {
+  border: 4px solid #00d573;
+  border-width: 4px 0 0 0;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.swirl div:first-child {
+  width: 200px;
+  height: 200px;
+}
+.swirl div:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  top: 25px;
+  left: 25px;
+  transform: rotate(50deg);
+}
+.swirl div:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  top: 50px;
+  left: 50px;
+  transform: rotate(10deg);
+}
+@keyframes swirlSpin {
+  from {
+  }
+  to {
+    transform: rotate(360deg);
+    filter: blur(2px) hue-rotate(360deg);
+  }
 }

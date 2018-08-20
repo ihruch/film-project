@@ -1,27 +1,43 @@
+<div class='modal-win' #modalWin>
+    <div class="swirl swirlIn">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
 <div class="wrapper-main-block" [ngStyle]="{'background-image':'url(https://image.tmdb.org/t/p/w1280' + dataDescriptionFilm?.backdrop_path + ')'}">
     <div class="container-bg">
-        <div class="container " *ngIf="dataDescriptionFilm?.poster_path">
+        <!-- <div class="container " *ngIf="dataDescriptionFilm?.poster_path"> -->
+        <div class="container ">
 
             <div class="main-desc-block">
                 <div class="img-block">
-                    <img src="https://image.tmdb.org/t/p/w300_and_h450_face{{dataDescriptionFilm.poster_path}}" alt="">
+
+                    <ng-container *ngIf="dataDescriptionFilm?.poster_path; then filmImg else noFilmImg"></ng-container>
+                    <ng-template #filmImg>
+                        <img src="https://image.tmdb.org/t/p/w300_and_h450_face{{dataDescriptionFilm.poster_path}}">
+                    </ng-template>
+                    <ng-template #noFilmImg>
+                        <img src="http://via.placeholder.com/300x450">
+                    </ng-template>
+
                 </div>
 
                 <div class="content-block">
                     <div class="title-content">
-                        <h1> {{dataDescriptionFilm.title}}</h1>
-                        <span> ( {{dataDescriptionFilm.release_date | slice:0:4 }})</span>
+                        <h1> {{dataDescriptionFilm?.title}}</h1>
+                        <span> ( {{dataDescriptionFilm?.release_date | slice:0:4 }})</span>
                     </div>
 
                     <div class="desc-content">
                         <h3>Обзор</h3>
-                        {{ dataDescriptionFilm.overview }}
+                        {{ dataDescriptionFilm?.overview }}
                     </div>
 
                     <div class="social-block">
                         <ul>
                             <li class='chart'>
-                                <app-status-icon *ngIf="dataDescriptionFilm.vote_average" ratingVote="{{dataDescriptionFilm.vote_average}}" [sizeRatingIcon]="sizeRat"></app-status-icon>
+                                <app-status-icon *ngIf="dataDescriptionFilm?.vote_average" ratingVote="{{dataDescriptionFilm.vote_average}}" [sizeRatingIcon]="sizeRat"></app-status-icon>
                                 <span>Рейтинг
                                     <br>зрителей</span>
                             </li>
@@ -55,31 +71,35 @@
                             </li>
                         </ul>
                     </div>
-
                 </div>
-
-
             </div>
-
         </div>
     </div>
 </div>
 
 <!--Блок инофрмации об актерах и выпуске фильма -->
 <div class="block-info-film">
-    <div class="container" *ngIf="dataDescriptionFilm?.poster_path">
+    <!-- <div class="container" *ngIf="dataDescriptionFilm?.poster_path"> -->
+    <div class="container">
         <div class="wrapper-block-imfo">
             <div class="white-blick">
                 <h3>В главных ролях</h3>
                 <div class="wrapper-actors">
                     <mat-card class="actor-card" *ngFor="let actor of dataCharactersFilm?.cast | slice:0:10">
-                        <img src="https://image.tmdb.org/t/p/w138_and_h175_face/{{actor.profile_path}}" alt="Photo of {{actor.name}}">
+                        <ng-container *ngIf="actor.profile_path; then filmImg else noFilmImg"></ng-container>
                         <mat-card-content>
                             <p>
                                 <strong>{{actor.name}}</strong>
                                 <br>{{actor.character}}
                             </p>
                         </mat-card-content>
+
+                        <ng-template #filmImg>
+                            <img src="https://image.tmdb.org/t/p/w138_and_h175_face/{{actor.profile_path}}">
+                        </ng-template>
+                        <ng-template #noFilmImg>
+                            <img src="https://via.placeholder.com/138x175">
+                        </ng-template>
                     </mat-card>
                 </div>
             </div>

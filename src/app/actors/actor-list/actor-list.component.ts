@@ -1,6 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  Input,
+  ElementRef
+} from '@angular/core';
 import { ActorsService } from '../../shared/services/actors.service';
-import { MatPaginator } from '@angular/material';
+import { MatPaginator, PageEvent } from '@angular/material';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-actor-list',
@@ -9,6 +17,7 @@ import { MatPaginator } from '@angular/material';
 })
 export class ActorListComponent implements OnInit {
   resultActors = [];
+
   imgPath = this.actorsService.smallBackPath;
 
   configPage = {
@@ -21,11 +30,15 @@ export class ActorListComponent implements OnInit {
   isTrue = true;
   isVisible = false;
 
+  @ViewChild('modalWin')
+  modalWin: ElementRef;
+
   // MatPaginator Inputs
   lengthPag = null;
   pageSizePag = 20;
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
+  pageEvent: PageEvent;
 
   constructor(private actorsService: ActorsService) {}
 
@@ -39,6 +52,10 @@ export class ActorListComponent implements OnInit {
 
   ngOnInit() {
     this.getDataActors();
+    this.modalWin.nativeElement.style.display = 'block';
+    setTimeout(() => {
+      this.modalWin.nativeElement.style.display = '';
+    }, 1500);
   }
 
   getDataActors() {
@@ -98,8 +115,17 @@ export class ActorListComponent implements OnInit {
     }
   }
 
-  handlerClick() {
+  handlerClick(event) {
+    const btn = event.target.closest('button');
+    btn.disabled = true;
+    this.modalWin.nativeElement.style.display = 'block';
+
     this.configPage.currentPage = this.paginator.pageIndex + 1;
     this.queryStr ? this.handlerSearchFilm() : this.getDataActors();
+
+    setTimeout(() => {
+      btn.disabled = '';
+      this.modalWin.nativeElement.style.display = '';
+    }, 1500);
   }
 }

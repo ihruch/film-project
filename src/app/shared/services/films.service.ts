@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, retry } from 'rxjs/operators';
+import { map, retry, delay } from 'rxjs/operators';
 
 @Injectable()
 export class FilmsService {
@@ -36,7 +36,8 @@ export class FilmsService {
           }
           return x;
         })
-      );
+      )
+      .pipe(delay(1000));
   }
 
   searchFilms(query, page) {

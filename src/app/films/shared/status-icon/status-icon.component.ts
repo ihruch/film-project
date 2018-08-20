@@ -62,7 +62,7 @@ export class StatusIconComponent implements OnInit {
       ctx.strokeStyle = '#204529';
       ctx.lineWidth = '4';
       ctx.stroke();
-
+ 
       ctx.beginPath();
       ctx.strokeStyle = '#21d07a';
       ctx.lineWidth = '4';

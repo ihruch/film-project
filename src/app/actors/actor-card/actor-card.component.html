@@ -2,11 +2,31 @@
 
   <div class="container">
     <div class="main-line-wrapper">
+      
       <div class="block-foto">
-        <img src="https://image.tmdb.org/t/p/w300_and_h450_face{{dataDescriptionActor?.profile_path}}" alt="">
+
+        <ng-container *ngIf="dataDescriptionActor?.profile_path; then filmImg else noFilmImg"></ng-container>
+
+        <ng-template #filmImg>
+          <img src="https://image.tmdb.org/t/p/w300_and_h450_face{{dataDescriptionActor?.profile_path}}" alt="">
+        </ng-template>
+        <ng-template #noFilmImg>
+          <img src="https://via.placeholder.com/300x450" alt="film.title">
+        </ng-template>
+
+
       </div>
       <div class="block-content">
-        <h2>{{dataDescriptionActor?.name}}</h2>
+        <div class='title-main-card'>
+          <h2>{{dataDescriptionActor?.name}}</h2>
+
+          <ul class='block-rating'>
+            <li *ngFor="let icon of starts">
+              <mat-icon>{{ icon }}</mat-icon>
+            </li>
+          </ul>
+        </div>
+
         <div class="item-biography"> {{ dataDescriptionActor?.biography | slice:0:500}}... </div>
         <button mat-icon-button>
           <mat-icon aria-label="Open window" (click)='openWin()'>arrow_drop_down_circle</mat-icon>
@@ -23,7 +43,7 @@
         <h3>Информация об актере</h3>
         <p>
           <strong>Пол</strong>
-          <Br> {{dataDescriptionActor?.genre == 1? 'Женский': 'Мужской'}}
+          <Br> {{ dataDescriptionActor?.gender === 1? 'Женский': 'Мужской'}}
         </p>
         <p>
           <strong>Всего фильмов</strong>
@@ -57,12 +77,18 @@
 
           <mat-card *ngFor="let film of (dataPalyinFilm | slice:0:8)">
             <a [routerLink]="['/films', film?.id]">
-              <img src="https://image.tmdb.org/t/p/w150_and_h225_bestv2/{{film.poster_path}}" alt="film.title">
+
+              <ng-container *ngIf="film.poster_path; then filmImg else noFilmImg"></ng-container>
               <mat-card-title>{{film.title}}</mat-card-title>
+
+              <ng-template #filmImg>
+                <img src="https://image.tmdb.org/t/p/w150_and_h225_bestv2/{{film.poster_path}}" alt="film.title">
+              </ng-template>
+              <ng-template #noFilmImg>
+                <img src="https://via.placeholder.com/150x225" alt="film.title">
+              </ng-template>
             </a>
           </mat-card>
-
-
 
 
         </div>

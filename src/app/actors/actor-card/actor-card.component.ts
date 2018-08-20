@@ -19,6 +19,13 @@ export class ActorCardComponent implements OnInit {
   urlImgActor = this.actorsService.smallMainPage;
   urlSmallImg = this.actorsService.imgBestv2; // для отображения фото картин в которых снимался актер
 
+  // рейтинг
+  popularity: number;
+  quantityStar = 5;
+  starts: string[] = [];
+  intStar: any;
+  modStar: any;
+
   @ViewChild('modalWinBiography', { read: ElementRef })
   winModal: ElementRef;
 
@@ -34,16 +41,38 @@ export class ActorCardComponent implements OnInit {
 
       // основные данные об актере
       this.actorsService.getPrimaryInfoActor(this.idActor).subscribe(data => {
-        // console.log(data);
+        console.log(data);
         this.dataDescriptionActor = data;
+        this.popularity = data['popularity'];
+        this.rating();
       });
     });
 
     // по каким фильмам известен
     this.actorsService.actInfilms(this.idActor).subscribe(data => {
       this.dataPalyinFilm = this.actorsService.sortData(data['cast']);
-      console.log(this.dataPalyinFilm);
     });
+  }
+
+  rating() {
+    this.intStar = Math.ceil(Math.ceil(this.popularity) / this.quantityStar);
+    this.modStar = (this.popularity / 5 - this.intStar).toFixed(1);
+
+    for (let index = 0; index < this.quantityStar; index++) {
+      if (index < this.intStar) {
+        this.starts.push('star');
+      }
+
+      if (index == this.intStar) {
+        this.modStar > 0.5
+          ? this.starts.push('star_half')
+          : this.starts.push('star_border');
+      }
+      if (index > this.intStar) {
+        this.starts.push('star_border');
+      }
+    }
+    console.log(this.starts);
   }
 
   openWin() {

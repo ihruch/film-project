@@ -18,14 +18,15 @@
 </mat-card>
 
 <mat-card [class.mat-card-pag]="isTrue" [class.paginator-block]='isTrue'>
-  <mat-paginator [length]="lengthPag" [pageSize]="pageSizePag" (page)="pageEvent = $event" (click)='handlerClick()'>
+  <mat-paginator [length]="lengthPag" [pageSize]="pageSizePag" (page)="pageEvent = $event" (click)='handlerClick($event)'>
   </mat-paginator>
+
 </mat-card>
 
 <div class="container">
   <ng-container *ngIf='!isVisible'>
     <ng-container *ngFor=' let film of resultFilms'>
-      <a [routerLink]="['/films',film.id]">
+      <a [routerLink]="['/films', film.id]">
         <app-film-item [film]='film' [imgPath]='imgPath' [class.card-item]="isTrue"></app-film-item>
       </a>
     </ng-container>
@@ -34,4 +35,12 @@
     <p class='comment-block'>По вашему запросу
       <span class='query-str'>{{queryStr}}</span> ничего не найденно! Попробуйте изменить запрос поиска.</p>
   </ng-container>
+</div>
+
+<div class='modal-win' #modalWin>
+  <div class="swirl swirlIn">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </div>
