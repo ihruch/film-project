@@ -4,15 +4,26 @@
   </mat-card-content>
 
   <mat-card-content [class.view-block]='isTrue'>
+
+    <a [routerLink]="['/films/list-favorite']">
+      <button mat-icon-button color="primary">
+        <i class=" medium material-icons ">
+          favorite_border
+        </i>
+      </button>
+    </a>
+
     <button mat-icon-button color="primary">
       <i class="medium material-icons">
         view_headline
       </i>
     </button>
     <button mat-icon-button color="primary">
+
       <i class=" medium material-icons ">
         view_week
       </i>
+
     </button>
   </mat-card-content>
 </mat-card>
@@ -26,9 +37,11 @@
 <div class="container">
   <ng-container *ngIf='!isVisible'>
     <ng-container *ngFor=' let film of resultFilms'>
-      <a [routerLink]="['/films', film.id]">
-        <app-film-item [film]='film' [imgPath]='imgPath' [class.card-item]="isTrue"></app-film-item>
-      </a>
+      <div class='a'>
+        <!-- <a [routerLink]="['/films', film.id]"> -->
+        <app-film-item [film]='film' [imgPath]='imgPath'></app-film-item>
+        <!-- </a> -->
+      </div>
     </ng-container>
   </ng-container>
   <ng-container *ngIf='isVisible'>

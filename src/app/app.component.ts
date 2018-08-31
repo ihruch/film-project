@@ -38,8 +38,9 @@ export class AppComponent {
 
   logout() {
     if (this.authService.isLoggedIn()) {
-        this.authService.logout();
-        this.router.navigate(['/login']);
+      localStorage.removeItem('session_id')
+      this.authService.logout();
+      this.router.navigate(['/login']);
     }
   }
 }

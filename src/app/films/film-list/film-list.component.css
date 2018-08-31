@@ -9,7 +9,7 @@
   padding-top: 30px;
   padding-bottom: 50px;
 }
-a {
+.a {
   box-sizing: border-box;
   flex: 1 1 40%;
   /* flex: 0 1 33%; */

@@ -3,7 +3,7 @@ import { FilmsService } from '../../shared/services/films.service';
 import { TagPlaceholder } from '@angular/compiler/src/i18n/i18n_ast';
 
 import { MatPaginator, PageEvent } from '@angular/material';
-
+import { AuthMDBService } from './../../shared/services/auth-mdb.service'
 @Component({
   selector: 'app-film-list',
   templateUrl: './film-list.component.html',
@@ -35,7 +35,10 @@ export class FilmListComponent implements OnInit {
   @ViewChild('modalWin', { read: ElementRef })
   modalWin: ElementRef;
 
-  constructor(private filmsService: FilmsService) {}
+  constructor(
+    private filmsService: FilmsService,
+    private  dbServices: AuthMDBService
+  ) {}
 
   saveData(result, page, totalPage, totalResult) {
     this.resultFilms = result;
@@ -123,4 +126,5 @@ export class FilmListComponent implements OnInit {
       this.modalWin.nativeElement.style.display = '';
     }, 1500);
   }
+
 }

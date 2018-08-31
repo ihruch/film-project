@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FilmsComponent } from './films.component';
 import { FilmListComponent } from './film-list/film-list.component';
 import { FilmCardComponent } from './film-card/film-card.component';
+import { FavouriteComponent } from './shared/favourite/favourite.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
       {
         path: '',
         component: FilmListComponent
+      },
+      {
+        path: 'list-favorite',
+        component: FavouriteComponent
       },
       {
         path: ':id',

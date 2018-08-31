@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="wrapper-comtainer">
+
+    <div class="block-credential">
+      <div class='form-title'>
+        <h3> Для использования системы необходимо авторизоваться </h3>
+      </div>
+
+      <form [formGroup]='regForm' [ngClass]="{'form-login': true}" (ngSubmit)="submitForm()">
+        <mat-form-field>
+          <input matInput type="text" placeholder="Логин" name="userlog" formControlName='logField'>
+          <mat-error *ngIf="formErrors.logField">
+            {{ formErrors.logField}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="Пароль" name="userpass" formControlName='passField'>
+          <mat-error *ngIf="formErrors.passField">
+            {{ formErrors.passField}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="email" placeholder="Email" name="useremail" formControlName='emailField'>
+          <mat-error *ngIf="formErrors.emailField">
+            {{ formErrors.emailField}}
+          </mat-error>
+        </mat-form-field>
+
+        <button type='submit' mat-stroked-button color="primary">Зарегистрироваться</button>
+        <button mat-stroked-button color="primary" (click)='goToLogin()'>login</button>
+      </form>
+    </div>
+
+  </div>
+</div>

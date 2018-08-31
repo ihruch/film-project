@@ -14,6 +14,7 @@ import { StatusIconComponent } from './shared/status-icon/status-icon.component'
 import { FilmCardComponent } from './film-card/film-card.component';
 
 import { FilmsService } from './../shared/services/films.service';
+import { FavouriteComponent } from './shared/favourite/favourite.component';
 
 @NgModule({
   imports: [
@@ -28,14 +29,16 @@ import { FilmsService } from './../shared/services/films.service';
     FilmListComponent,
     FilmItemComponent,
     StatusIconComponent,
-    FilmCardComponent
+    FilmCardComponent,
+    FavouriteComponent
   ],
   exports: [
     FilmsComponent,
     FilmListComponent,
     FilmItemComponent,
     StatusIconComponent,
-    FilmCardComponent
+    FilmCardComponent,
+    FavouriteComponent
   ],
   providers: [FilmsService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

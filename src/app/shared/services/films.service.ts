@@ -5,7 +5,7 @@ import { map, retry, delay } from 'rxjs/operators';
 @Injectable()
 export class FilmsService {
   apiUrl: string = 'https://api.themoviedb.org/3';
-  apiKey: string = '0994e7679a856150aadcecf7de489bce';
+  apiKey: string = 'd73711f75d852eb912c0d4955eb96e08';
   movieUrl: string = `${this.apiUrl}/movie`;
   searchUrl: string = `${this.apiUrl}/search`;
   personUrl: string = `${this.apiUrl}/person`;

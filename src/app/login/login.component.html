@@ -1,7 +1,7 @@
 <div class="container">
   <div class="wrapper-comtainer">
 
-   <form class="form-login" (ngSubmit)='login()'>
+    <form class="form-login" (ngSubmit)='login()'>
       <div class='form-title'>
         <h3> Для использования системы необходимо авторизоваться </h3>
       </div>
@@ -13,9 +13,10 @@
         <input matInput type="text" placeholder="Пароль" [(ngModel)]='credentials.password' name="password">
       </mat-form-field>
 
-      <button mat-stroked-button color="primary">Зарегистрироваться</button>
-    </form> 
-    
+      <button mat-stroked-button color="primary">Войти</button>
+      <button mat-stroked-button color="primary" (click)='regForm()'>Зарегистрироваться</button>
+    </form>
+
 
   </div>
 </div>

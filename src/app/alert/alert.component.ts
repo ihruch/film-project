@@ -17,16 +17,16 @@ export class AlertComponent implements OnInit {
       this.message = msg;
       this.isShow = true;
       if (!msg.action) {
-        setTimeout(() => (this.isShow = false), 4000);
+        setTimeout(() => (this.isShow = false), 3000);
       }
     });
   }
 
-  submit() {
+  notClose() {
     this.isShow = false;
     this.msgService.submit();
   }
-
+  // закрываем модальное окно без разрешниея покинуть данный компонент
   close() {
     this.isShow = false;
     this.msgService.submit(false);

@@ -7,7 +7,7 @@ import { IMessages } from './../models/massage.interface';
 })
 export class MessagesService {
   private message$ = new Subject<IMessages>();
-  private submit$ = new Subject<Boolean>();
+  private submit$ = new Subject<boolean>();
 
   constructor() {}
 
@@ -21,7 +21,6 @@ export class MessagesService {
   submit(confirmation = true) {
     this.submit$.next(confirmation);
   }
-
   getSubmit() {
     return this.submit$.asObservable();
   }

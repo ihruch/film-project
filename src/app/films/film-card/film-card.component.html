@@ -49,9 +49,9 @@
                                 </button>
                             </li>
                             <li>
-                                <button mat-icon-button color="primary">
+                                <button mat-icon-button color="primary" (click)='addFavourite(dataDescriptionFilm.id)' [ngClass]="{'redColor': statusIcon}">
                                     <i class="medium material-icons">
-                                        favorite_border
+                                        {{statusIcon? 'favorite' : 'star_border'}}
                                     </i>
                                 </button>
                             </li>

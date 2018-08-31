@@ -1,0 +1,6 @@
+<div class="container">
+  <ng-container *ngFor='let film of result'>
+
+    <app-film-item [film]='film' [imgPath]='imgPath' [class.card-item]="isTrue"></app-film-item>
+  </ng-container>
+</div>

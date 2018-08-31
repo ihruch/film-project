@@ -68,6 +68,7 @@ export class ActorCardComponent implements OnInit {
           ? this.starts.push('star_half')
           : this.starts.push('star_border');
       }
+      
       if (index > this.intStar) {
         this.starts.push('star_border');
       }

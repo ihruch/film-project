@@ -6,7 +6,11 @@
     }">
 
   <div class="alert-item">
-    <div class="alert-item-body">{{message.body}}</div>
+    <div class="alert-item-body">{{message.body}}
+      <button mat-icon-button (click)="notClose()" *ngIf="message.action">
+        <i class="material-icons">check</i>
+      </button>
+    </div>
 
     <button mat-icon-button (click)="close()" *ngIf="message.action">
       <i class="material-icons">close</i>

@@ -1,14 +1,16 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FilmsService } from '../../shared/services/films.service';
+import { AuthMDBService } from './../../shared/services/auth-mdb.service';
 import { forkJoin, Observable } from 'rxjs';
 import { delay, tap, switchMap, map, mergeMap } from 'rxjs/operators';
-
+import { IFilm } from './../shared/models/film';
 import {
   DomSanitizer,
   SafeResourceUrl,
   SafeUrl
 } from '@angular/platform-browser';
+import { isNgTemplate } from '@angular/compiler';
 
 class IDescrFilm {
   adult: Boolean;
@@ -46,12 +48,6 @@ class ICharactersFilm {
   crew: object[];
   id: number;
 }
-class ISimilarFilm {
-  page: number;
-  results: object[];
-  total_pages: number;
-  total_results: number;
-}
 
 @Component({
   selector: 'app-film-card',
@@ -71,13 +67,15 @@ export class FilmCardComponent implements OnInit {
   urlImgPortret;
   sizeRat = 72;
   vote = 0;
+  statusIcon = false;
 
   @ViewChild('modalWin')
   modalWin: ElementRef;
   constructor(
     private route: ActivatedRoute,
     private filmsService: FilmsService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private dbService: AuthMDBService
   ) {}
 
   ngOnInit() {
@@ -101,8 +99,33 @@ export class FilmCardComponent implements OnInit {
           this.dataSimilarFilm
         ] = data;
         this.modalWin.nativeElement.style.display = '';
-        console.log(this.dataDescriptionFilm);
+        // console.log(this.dataDescriptionFilm);
+        this.isFavouriteFilm();
       });
+  }
+
+  isFavouriteFilm() {
+    this.dbService.getFavouriteList().subscribe((data: IFilm[]) => {
+      console.log(data);
+      const filmFavourite = data.find(
+        item => item.id === this.dataDescriptionFilm.id
+      );
+      if (filmFavourite) {
+        this.statusIcon = true;
+      }
+    });
+  }
+
+  addFavourite(filmID) {
+    if (this.statusIcon) {
+      this.dbService.addToFavouriteItemList(filmID, false).subscribe(x => {
+        this.statusIcon = false;
+      });
+    } else {
+      this.dbService.addToFavouriteItemList(filmID).subscribe(x => {
+        this.statusIcon = true;
+      });
+    }
   }
 
   getSantizeUrl(url) {
