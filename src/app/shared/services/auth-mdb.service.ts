@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { pluck, tap } from 'rxjs/operators';
-import { Subject, Observable} from 'rxjs';
+import { pluck, tap, retry } from 'rxjs/operators';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,17 @@ export class AuthMDBService {
   keyAPI = 'd73711f75d852eb912c0d4955eb96e08';
   block_keyAPI = `api_key=${this.keyAPI}`;
   userId: number;
-
+  sessionID: string;
+  private loggedIn = false;
   private subject = new Subject<string>();
 
+  constructor(private http: HttpClient) {
+    this.loggedIn = !!localStorage.getItem('session_id');
+  }
 
-  constructor(private http: HttpClient) {}
+  isLoggedIn() {
+    return this.loggedIn;
+  }
 
   setChangeMessage(msg) {
     this.subject.next(msg);
@@ -51,9 +57,8 @@ export class AuthMDBService {
       .pipe(
         pluck('session_id'),
         tap((sessionID: string) => {
-          console.log(sessionID);
-          localStorage.setItem('session_id', sessionID);
           console.log('sessionID - ', sessionID);
+          localStorage.setItem('session_id', sessionID);
         })
       );
   }
@@ -72,22 +77,22 @@ export class AuthMDBService {
       media_id: filmID,
       favorite: isTrue
     };
-    const sessionID = localStorage.getItem('session_id');
+    this.sessionID = localStorage.getItem('session_id');
     return this.http.post(
       `${this.mainURL}account/${this.userId}/favorite?${
         this.block_keyAPI
-      }&session_id=${sessionID}`,
+      }&session_id=${this.sessionID}`,
       body
     );
   }
 
   getFavouriteList() {
-    const sessionID = localStorage.getItem('session_id');
+    // const sessionID = localStorage.getItem('session_id');
     return this.http
       .get(
         `${this.mainURL}account/${this.userId}/favorite/movies?${
           this.block_keyAPI
-        }&session_id=${sessionID}`
+        }&session_id=${this.sessionID}`
       )
       .pipe(pluck('results'));
   }
@@ -108,3 +113,28 @@ export class AuthMDBService {
     );
   }
 }
+
+// export class AuthService {
+//   private authUrl = 'https://reqres.in/api';
+//   private loggedIn = false;
+
+//   constructor(private http: HttpClient) {
+//     this.loggedIn = !!localStorage.getItem('auth_token');
+//   }
+
+//   isLoggedIn() {
+//     return this.loggedIn;
+//   }
+
+  // login(username: string, password: string): Observable<any> {
+  //   return this.http.post(`${this.authUrl}/login`, { username, password }).pipe(
+  //     retry(2),
+  //     tap(res => {
+  //       if (res.token) {
+  //         localStorage.setItem('auth_token', res.token);
+  //         this.loggedIn = true;
+  //       }
+  //     })
+  //   );
+  // }
+

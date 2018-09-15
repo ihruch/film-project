@@ -49,13 +49,13 @@ export class FilmItemComponent implements OnInit {
     if (this.statusIcon) {
       this.dbService.addToFavouriteItemList(filmID, false).subscribe(x => {
         this.dbService.setChangeMessage(x['status_message']);
-        console.log((x['status_message']);
+        console.log(x['status_message']);
         this.statusIcon = false;
       });
     } else {
       this.dbService.addToFavouriteItemList(filmID).subscribe(x => {
-        this.dbService.setChangeMessage(x['status_message']); 
-        console.log((x['status_message']);
+        this.dbService.setChangeMessage(x['status_message']);
+        console.log(x['status_message']);
         this.statusIcon = true;
       });
     }

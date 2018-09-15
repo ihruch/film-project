@@ -8,7 +8,7 @@ import { IFilm } from './../models/film';
   styleUrls: ['./favourite.component.css']
 })
 export class FavouriteComponent implements OnInit {
-  result: IFilm[];
+  result: any;
   imgPath = this.filmsService.smallImgPath;
 
   constructor(
